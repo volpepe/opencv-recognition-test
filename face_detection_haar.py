@@ -58,6 +58,7 @@ def main():
 
     output = resize(output, 1000, keep_ratio=True)
     show_image(output, "Detection result")
+    cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     main()
