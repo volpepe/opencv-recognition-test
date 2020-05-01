@@ -109,11 +109,11 @@ def first_part_showcase():
     draw(image)
 
 def second_part_showcase():
-    pass
+    image = cv2.imread("tetris_blocks.png")
 
 def main():
     #showcase some of the experiments
-    first_part_showcase()
+    #first_part_showcase()
     second_part_showcase()
 
 if __name__ == "__main__":
