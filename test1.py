@@ -86,6 +86,14 @@ def blur(image):
 def draw(image):
     #drawing on images: all drawings are made in place so always make a copy of them
     output = image.copy()
+    #precalculated rectangle on image with color red and thickness 2
+    cv2.rectangle(output, (320, 60), (420, 160), (0, 0, 255), 2)
+    cv2.circle(output, (300, 150), 20, (255, 0, 0), -1) #-1 thickness fills the figure
+    cv2.line(output, (60, 20), (400, 200), (0, 255, 0), 5)
+    cv2.putText(output, "OpenCV + Jurassic Park!!!", (250, 40), 
+	                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+    cv2.imshow("Rectangle", output)
+    cv2.waitKey(0)
 
 def main():
     #showcase some of the experiments
@@ -103,3 +111,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
