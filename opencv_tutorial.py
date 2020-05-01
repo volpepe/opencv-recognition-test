@@ -37,7 +37,7 @@ def cutout(image):
 def resize(image, keep_ratio=False):
     #resize an image without considering the aspect ratio
     h, w, d = image.shape
-    if keep_ratio:
+    if not keep_ratio:
         resized = cv2.resize(image, (200, 200))
     else:
         #calculate the aspect ratio
