@@ -137,6 +137,22 @@ def find_contours(image):
                                                             #color and thickness
         show_image(output)
 
+def erosion(image):
+    mask = cv2.threshold(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY), 225, 255, cv2.THRESH_BINARY_INV)[1]
+    mask = cv2.erode(mask, None, iterations=5)
+    show_image(mask)
+
+def dilation(image):
+    mask = cv2.threshold(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY), 225, 255, cv2.THRESH_BINARY_INV)[1]
+    mask = cv2.dilate(mask, None, iterations=5)
+    show_image(mask) 
+
+def masking(image, operation):
+    if operation == "mask_bg":
+        mask = cv2.threshold(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY), 225, 255, cv2.THRESH_BINARY_INV)[1]
+        output = cv2.bitwise_and(image, image, mask=mask)
+        show_image(output)
+
 def second_part_showcase():
     image = cv2.imread("tetris_blocks.png")
     show_image(image)
@@ -144,6 +160,9 @@ def second_part_showcase():
     edge_detection(image)
     threshold(image)
     find_contours(image)
+    erosion(image)
+    dilation(image)
+    masking(image, "mask_bg")
 
 def main():
     #showcase some of the experiments
