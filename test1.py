@@ -108,8 +108,42 @@ def first_part_showcase():
     blur(image)
     draw(image)
 
+def grayscale(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #changes the image from rgb color space to grayscale
+    show_image(gray)
+
+def edge_detection(image):
+    edged = cv2.Canny(image, 70, 150)
+    show_image(edged)
+
+def threshold(image):
+    # threshold the image by setting all pixel values >= than x
+    # to 255 (white; foreground) and all pixel values less than x to 0
+    # (black; background), thereby segmenting the image
+    thresh = cv2.threshold(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY), 225, 255, cv2.THRESH_BINARY_INV)[1]
+    show_image(thresh)
+
+def find_contours(image):
+    cnts = cv2.findContours(cv2.threshold(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY), 225, 255, cv2.THRESH_BINARY_INV)[1],
+        cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cnts = imutils.grab_contours(cnts) #retrocompatibility utility
+    output = image.copy()
+
+    #draw contours
+    for i in range(len(cnts)):
+        # draw each contour on the output image with a 3px thick purple
+        # outline, then display the output contours one at a time
+        cv2.drawContours(output, cnts, i, (240, 0, 159), 3) #where to draw, contours array, which contour to draw
+                                                            #color and thickness
+        show_image(output)
+
 def second_part_showcase():
     image = cv2.imread("tetris_blocks.png")
+    show_image(image)
+    grayscale(image)
+    edge_detection(image)
+    threshold(image)
+    find_contours(image)
 
 def main():
     #showcase some of the experiments
