@@ -95,8 +95,7 @@ def draw(image):
     cv2.imshow("Rectangle", output)
     cv2.waitKey(0)
 
-def main():
-    #showcase some of the experiments
+def first_part_showcase():
     image = cv2.imread("jp.png")
     param_test(image)
     remove_red_channel(image)
@@ -108,6 +107,14 @@ def main():
     rotate_ez(image)
     blur(image)
     draw(image)
+
+def second_part_showcase():
+    pass
+
+def main():
+    #showcase some of the experiments
+    first_part_showcase()
+    second_part_showcase()
 
 if __name__ == "__main__":
     main()
