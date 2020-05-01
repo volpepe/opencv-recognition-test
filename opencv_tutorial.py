@@ -96,7 +96,7 @@ def draw(image):
     cv2.waitKey(0)
 
 def first_part_showcase():
-    image = cv2.imread("jp.png")
+    image = cv2.imread("imgs/jp.png")
     param_test(image)
     remove_red_channel(image)
     cutout(image)
@@ -154,7 +154,7 @@ def masking(image, operation):
         show_image(output)
 
 def second_part_showcase():
-    image = cv2.imread("tetris_blocks.png")
+    image = cv2.imread("imgs/tetris_blocks.png")
     show_image(image)
     grayscale(image)
     edge_detection(image)
@@ -166,7 +166,7 @@ def second_part_showcase():
 
 def main():
     #showcase some of the experiments
-    #first_part_showcase()
+    first_part_showcase()
     second_part_showcase()
 
 if __name__ == "__main__":
