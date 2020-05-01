@@ -168,6 +168,7 @@ def main():
     #showcase some of the experiments
     first_part_showcase()
     second_part_showcase()
+    cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     main()
